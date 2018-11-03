@@ -1,0 +1,6 @@
+AddDefaultCharset utf-8
+
+RewriteEngine on
+RewriteBase /
+RewriteCond %{REQUEST_URI} !(\.map|\.woff|\.woff2|\.ttf|\.css|\.js|\.php|\.png|\.jpg|\.gif|robots\.txt)$ [NC]
+RewriteRule ^(.*)$ index.php
