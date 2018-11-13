@@ -11,7 +11,7 @@
 
 	//DATABASE CONNECTION
 
-	define("DATABASE", "");
+	define("DATABASE", "munchkin_db");
 	define("DB_USER", "root");
 	define("DB_PASSWORD", "");
 ?>
