@@ -12,7 +12,6 @@
 					$this->render_mainPage();
 				}
 			}
-			var_dump($uri);
 			$uriArray = explode('/', $uri);
 			
 		}

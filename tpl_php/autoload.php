@@ -7,6 +7,7 @@
 	function __autoload($name) {
 		require 'class' . $name . '.php';
 	}
+	require_once "functions.php";
 	require_once "recaptchalib.php";
 	
  ?>

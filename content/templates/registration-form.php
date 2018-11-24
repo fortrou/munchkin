@@ -20,13 +20,7 @@
 		}
 	}
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>REGISTER</title>
-</head>
-<body>
+<?php get_header(); ?>
 	<form action="" method="post">
 		<input type="text" name="login">
 		<br>
@@ -37,5 +31,4 @@
 		<input type="submit" name="register" value="Register">
 		<br>
 	</form>
-</body>
-</html>
+<?php get_footer(); ?>

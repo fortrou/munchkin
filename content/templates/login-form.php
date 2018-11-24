@@ -20,13 +20,7 @@
 		}
 	}
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>LOGIN</title>
-</head>
-<body>
+<?php get_header(); ?>
 	<form action="" method="post">
 		<input type="text" name="login">
 		<br>
@@ -35,5 +29,4 @@
 		<input type="submit" name="go_login" value="login now">
 		<br>
 	</form>
-</body>
-</html>
+<?php get_footer(); ?>

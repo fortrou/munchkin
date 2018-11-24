@@ -19,10 +19,22 @@
 					$this->get_profileTemplate();
 				}
 			}
+			if($uriArray[0] == 'cabinet' && $uriArray[1] == 'user-list') {
+				if(method_exists($this, "get_usersListTemplate")) {
+					$this->get_usersListTemplate();
+				}
+			}
 		}
 		private function get_profileTemplate() {
 			global $appController;
 			require_once(DOC_ROOT . "/content/templates/cabinet/profile.php");
+		}
+		private function get_usersListTemplate() {
+			global $appController;
+			require_once(DOC_ROOT . "/content/templates/cabinet/admin/users.php");
+		}
+		private function get_usersList($user_role) {
+			return $result = $this->mainModel->get_usersList($_SESSION['user']['user_role'], $user_role);
 		}
 	}
 ?>

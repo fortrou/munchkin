@@ -6,12 +6,10 @@
 	<div class="menu header-element">
 		<ul>
 			<li class="menu-item"><a href="<?php echo PROTOCOL . SITE_NAME; ?>">Main</a></li>
-			<li class="menu-item"><a href="#">About</a></li>
+			<li class="menu-item"><a href="#">My decks</a></li>
 			<li class="menu-item"><a href="#">Contacts</a></li>
-			<?php if(!isset($_SESSION["user"])): ?>
-				<li class="menu-item"><a href="/login">Sign in</a></li>
-				<li class="menu-item"><a href="/registration">Sign up</a></li>
-			<?php endif; ?>
+			<li class="menu-item"><a href="#">Search game</a></li>
+			<li class="menu-item"><a href="/goout.php">Sign out</a></li>
 		<div class="clearfix"></div>
 	</div>
 </div>

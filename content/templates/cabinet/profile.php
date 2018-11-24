@@ -8,13 +8,7 @@
 		}
 	}
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>REGISTER</title>
-</head>
-<body>
+<?php get_header(); ?>
 	<form action="" method="post" enctype="multipart/form-data">
 		<input type="text" name="login" value="<?php echo $_SESSION['user']['user_login']; ?>" disabled>
 		<br>
@@ -59,5 +53,4 @@
 		}
 		document.getElementById('files').addEventListener('change', handleFileSelect, false);
 	</script>
-</body>
-</html>
+<?php get_footer(); ?>
