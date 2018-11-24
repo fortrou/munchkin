@@ -51,26 +51,16 @@
 			return true;
 		}
 
-		static public function Load( $file )
+		static public function Load( $file, $path )
 		{
-			$up_dir = '../upload/hworks/';
+			$up_dir = $path;
 			$type = $file['type'];
 
 		    $name = md5(microtime()).strrchr($file['name'] , '.');
 		    $uploadfile = $up_dir.$name;
-
 		    return move_uploaded_file($file['tmp_name'],$uploadfile) ? $name : false;
 		}
-		static public function Load_hw( $file )
-		{
-			$up_dir = '../../upload/hworks/';
-			$type = $file['type'];
-
-		    $name = md5(microtime()).strrchr($file['name'] , '.');
-		    $uploadfile = $up_dir.$name;
-
-		    return move_uploaded_file($file['tmp_name'],$uploadfile) ? $name : false;
-		}
+		
 
 	}
 

@@ -30,6 +30,22 @@
 			else if($this->currentUri == '') $controller = "Main";
 			else $controller = $uriArray[0];
 			// file checking
+			
+			// GLOBAL VARS
+
+			$db = Database::getInstance();
+			global $mysqli;
+			$mysqli = $db->getConnection();
+			global $appController;
+			global $userCookie;
+			$userCookie = new CookieManager('user', 'base64_encode', 'base64_decode');
+			$currentUser = $userCookie->get_cookie('user');
+			if(!empty($currentUser)) {
+				$_SESSION['user'] = unserialize($currentUser);
+			}
+			// var_dump($_SESSION);
+			// GLOBAL VARS
+			
 			if(file_exists("application/controllers/class" . $controller . ".php")) {
 				require_once("application/controllers/class" . $controller . ".php");
 				$appController = new $controller();

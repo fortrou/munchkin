@@ -8,6 +8,8 @@
 	else $referer = "";
 	define('REFERER_URI', $referer);
 	define('BLOCK_FOLDER', ROOT . "/tpl_blocks/");
+	define('AVATARS',  PROTOCOL . SITE_NAME . "content/images/avatars/");
+	define('AVATARS_UPLOAD',  ROOT . "/content/images/avatars/");
 
 	//DATABASE CONNECTION
 

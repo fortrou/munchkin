@@ -1,20 +1,27 @@
 <?php
 	class CookieManager {
 		private $cookie_data = array();
+		private $encode_method;
+		private $decode_method;
+
 		//конструктор-парсер куки
-		function __construct($cookie_name, $decode_method) {
+		function __construct($cookie_name, $encode_method, $decode_method) {
+			$this->encode_method = $encode_method;
+			$this->decode_method = $decode_method;
+			$decode = $decode_method;
 			if(isset($_COOKIE[$cookie_name]) && !empty($_COOKIE[$cookie_name])) {
-				$this->cookie_data = $decode_method($_COOKIE[$cookie_name]);
+				$this->cookie_data = $decode($_COOKIE[$cookie_name]);
 			}
 		}
 		//установка кук
-		public static function set_user_cookie($name, $value, $time = 0) {
+		public function set_user_cookie($name, $value, $time = 0) {
 			if(empty($name) || empty($value) || $time < 1) return false;
 			if(is_array($value)) {
-				$new_value = serialize($value);
+				$value = serialize($value);
 			}
-
-			setcookie($name, $value, $time);
+			$encode = $this->encode_method;
+			$value = $encode($value);
+			$result = setcookie($name, $value, time() + $time);
 		}
 		//удаление кук
 		public function unset_cookie($cookie_name = '') {
@@ -30,9 +37,10 @@
 			}
 			return false;
 		}
-		public static function get_cookie($name, $decode_method) {
-			if(isset($_COOKIE[$cookie_name]) && !empty($_COOKIE[$cookie_name])) {
-				return $decode_method($_COOKIE[$cookie_name]);
+		public function get_cookie($name) {
+			$decode = $this->decode_method;
+			if(isset($_COOKIE[$name]) && !empty($_COOKIE[$name])) {
+				return $decode($_COOKIE[$name]);
 			} else {
 				return array();
 			}

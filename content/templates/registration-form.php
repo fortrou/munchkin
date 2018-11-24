@@ -1,6 +1,23 @@
 <?php 
 	if(isset($_POST['register'])) {
-		$appController->create_user($_POST);
+		try {
+			$this->create_user($_POST);
+		} catch (Exception $e) {
+			switch ($e->getMessage()) {
+				case "e_1":
+					$error = "Empty form data";
+					break;
+				case "e_2":
+					$error = "Login already exists";
+					break;
+				case "e_3":
+					$error = "Incorrect data input";
+					break;
+				default:
+					$error = "Unknown error";
+			}
+			print($error);
+		}
 	}
 ?>
 <!DOCTYPE html>
@@ -10,7 +27,7 @@
 	<title>REGISTER</title>
 </head>
 <body>
-	<form action="">
+	<form action="" method="post">
 		<input type="text" name="login">
 		<br>
 		<input type="password" name="password">
