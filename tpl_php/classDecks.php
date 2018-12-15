@@ -8,7 +8,7 @@
 	 **/
 
 
-	class Deck {
+	class Decks {
 		private $deckID;
 		private $deckDoors;
 		private $deckDungeons;
@@ -21,6 +21,26 @@
 			if(empty($deckID)) return false;
 			$this->deckID = $deckID;
 		}
+
+		public static function get_deckList() {
+			$result = array();
+			if ($_SESSION['user']['user_role'] == 2) {
+				$result = Database::select('mnc_decks', array('*'));
+			} else if ($_SESSION['user']['user_role'] == 1) {
+				$result = Database::select('mnc_decks', array('*'), array('deck_author' => $_SESSION['user']['id']));
+			}
+			return $result;
+			
+
+
+		}
+
+		public static function create_deck($data=array()) {
+			$result = Database::insert('mnc_decks', array_keys($data), array_values($data));
+			return $result;
+
+		}
+
 		/*array(1 => array('1', 1),
 				2 => array('2', 1),
 				3 => array('3', 2),
