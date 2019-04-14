@@ -1,0 +1,38 @@
+<?xml version='1.0' standalone='yes'?>
+<config>
+	<routers>
+		<cabinet>
+			<controller>
+				<initController>Cabinet</initController>
+				<decks>
+					<initAction>get_decksCreateTemplate</initAction>
+				</decks>
+				<user-list>
+					<initAction>get_usersListTemplate</initAction>
+				</user-list>
+				<actionAlias>
+					<initAction></initAction>
+				</actionAlias>
+			</controller>
+		</cabinet>
+		<game>
+			<controller>
+				<initController></initController>
+				<actionAlias>
+					<initAction></initAction>
+				</actionAlias>
+			</controller>
+		</game>
+		<authorization>
+			<controller>
+				<initController>Authorization</initController>
+				<login>
+					<initAction>get_loginTemplate</initAction>
+				</login>
+				<registration>
+					<initAction>get_registerTemplate</initAction>
+				</registration>
+			</controller>
+		</authorization>
+	</routers>
+</config>

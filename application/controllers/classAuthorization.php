@@ -10,26 +10,15 @@
 			$this->mainModel = new AuthorizationModel();
 		}
 
-		public function init_work($uri) {
-			// var_dump($uri);
-			$uriArray = explode('/', $uri);
-			if($uriArray[0] == 'login') {
-				if(method_exists($this, "get_loginTemplate")) {
-					$this->get_loginTemplate();
-				}
-			}
-
-			if($uriArray[0] == 'registration') {
-				if(method_exists($this, "get_registerTemplate")) {
-					$this->get_registerTemplate();
-				}
-			}
+		public function init_work($action='') {			
+			header("Location: /404.php");
 		}
-		private function get_loginTemplate() {
+		public function get_loginTemplate() {
+			echo 123;
 			global $appController;
 			require_once(DOC_ROOT . "/content/templates/login-form.php");
 		}
-		private function get_registerTemplate() {
+		public function get_registerTemplate() {
 			global $appController;
 			require_once(DOC_ROOT . "/content/templates/registration-form.php");
 		}

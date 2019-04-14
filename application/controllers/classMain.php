@@ -15,7 +15,7 @@
 			$uriArray = explode('/', $uri);
 			
 		}
-		private function render_mainPage() {
+		public function render_mainPage() {
 			require_once(DOC_ROOT . "/content/templates/main.php");
 		}
 
