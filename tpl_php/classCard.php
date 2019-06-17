@@ -18,16 +18,20 @@
 			$this->cardImage = $image;
 		}
 		public function get_type() {
-			return $this->cardType
+			return $this->cardType;
 		}
 		public function get_description() {
-			return $this->cardDescription
+			return $this->cardDescription;
 		}
 		public function get_image() {
-			return $this->cardImage
+			return $this->cardImage;
 		}
 		public function act_card() {
 
+		}
+
+		public static function create_card($data = []) {
+			Database::insert('mnc_cards', array_keys($data), array_values($data));
 		}
 	}
 ?>

@@ -36,9 +36,7 @@
 		}
 
 		public static function create_deck($data=array()) {
-			$result = Database::insert('mnc_decks', array_keys($data), array_values($data));
-			return $result;
-
+			return Database::insert('mnc_decks', array_keys($data), array_values($data));
 		}
 
 		/*array(1 => array('1', 1),

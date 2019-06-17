@@ -13,9 +13,9 @@
 			return $result = Decks::get_deckList();
 
 		}
+
 		public function create_deck($data) { 
 			Decks::create_deck($data);
 
 		}
 	}
-?>

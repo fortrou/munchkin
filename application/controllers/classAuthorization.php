@@ -14,7 +14,6 @@
 			header("Location: /404.php");
 		}
 		public function get_loginTemplate() {
-			echo 123;
 			global $appController;
 			require_once(DOC_ROOT . "/content/templates/login-form.php");
 		}

@@ -7,6 +7,9 @@
 				<decks>
 					<initAction>get_decksCreateTemplate</initAction>
 				</decks>
+				<cards>
+					<initAction>get_cardsCreateTemplate</initAction>
+				</cards>
 				<user-list>
 					<initAction>get_usersListTemplate</initAction>
 				</user-list>

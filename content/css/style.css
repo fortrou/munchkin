@@ -1,0 +1,35 @@
+.header {
+	width: 100%;
+	margin: 0px auto;
+}
+.body {
+	width: 100%;
+	margin: 20px auto;
+}
+.header-element {
+	float: left;
+}
+.clearfix {
+	clear: both;
+}
+.menu .menu-item {
+	float: left;
+	margin-left: 20px;
+}
+.main-floated {
+	float: left;
+}
+.side-bar {
+	margin-left: 80px;
+}
+.main-bar {
+	margin-left: 60px;
+}
+.footer {
+	text-align: center;
+	margin-left: 60px;
+}
+
+.additional {
+	display: none;
+}

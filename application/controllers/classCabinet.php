@@ -3,6 +3,8 @@
 	require_once("application/models/classCabinetModel.php");
 	require_once("classAuthorization.php");
 	require_once("application/models/classDeckModel.php");
+	require_once("application/models/classCardModel.php");
+
 	
 	/**
 	* 
@@ -43,7 +45,11 @@
 			global $appController;
 			$decks = new DeckModel();
 			require_once(DOC_ROOT . "/content/templates/cabinet/decks_create.php");
+		}
 
+		public function get_cardsCreateTemplate() {
+			$cards = new CardModel();
+			require_once(DOC_ROOT . "/content/templates/cabinet/cards_create.php");
 		}
 	}
 ?>
