@@ -1,4 +1,5 @@
 <?php
+
 	function plural_form($number, $after) {
 		$cases = array (2, 0, 1, 1, 1, 2);
 		return $number.' '.$after[ ($number%100>4 && $number%100<20)? 2: $cases[min($number%10, 5)] ];
@@ -41,6 +42,7 @@
 			}
 		}
 	}
+
 	function get_header() {
 		if(!isset($_SESSION['user'])) {
 			require_once(ROOT . '/content/blocks/header.php');
@@ -50,9 +52,11 @@
 			require_once(ROOT . '/content/blocks/header-admin.php');
 		}
 	}
+
 	function get_footer() {
 		require_once(ROOT . '/content/blocks/footer.php');
 	}
+
 	/**
 	 * check_array_with_regular() - проверяет соответствие строки массиву паттернов, возвращает ключ => значение
 	 * $patterns - Массив паттернов

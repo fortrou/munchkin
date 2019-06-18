@@ -1,4 +1,8 @@
-	<div class="footer">some text like all rights reserved</div>
+	<footer>
+        <p>
+            Munchkin Test Build v0.01
+        </p>
+    </footer>
 	</div>
 </body>
 </html>

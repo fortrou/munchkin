@@ -30,9 +30,6 @@
 				$result = Database::select('mnc_decks', array('*'), array('deck_author' => $_SESSION['user']['id']));
 			}
 			return $result;
-			
-
-
 		}
 
 		public static function create_deck($data=array()) {

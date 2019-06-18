@@ -53,7 +53,7 @@ class Database
 		foreach($params as $value) {
 			if($value == '') {
 				$part_2 .= "'', ";
-			} else if(is_int($value) || is_double($value)) {
+			} else if(is_int($value) || is_float($value)) {
 				$part_2 .= "$value, ";
 			} else {
 				$part_2 .= "'$value', ";
@@ -62,9 +62,7 @@ class Database
 		$part_1 = rtrim($part_1,', ');
 		$part_2 = rtrim($part_2,', ');
 		$sql = sprintf("INSERT INTO %s (%s) VALUES (%s)", $table, $part_1, $part_2);
-		//$logger->log_query($sql, 1);
-		// print("<br>UPDATE SQL --- $sql<br>");die;
-		$res = $mysqli->query($sql);
+		$mysqli->query($sql);
 		if($mysqli->affected_rows == 0) return false;
 		return $mysqli->affected_rows;
 

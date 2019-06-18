@@ -5,11 +5,17 @@
 			<controller>
 				<initController>Cabinet</initController>
 				<decks>
-					<initAction>get_decksCreateTemplate</initAction>
+					<initAction>get_decksTemplate</initAction>
 				</decks>
+				<deck_create>
+					<initAction>get_decksCreateTemplate</initAction>
+				</deck_create>
 				<cards>
-					<initAction>get_cardsCreateTemplate</initAction>
+					<initAction>get_cardsTemplate</initAction>
 				</cards>
+				<card_create>
+					<initAction>get_cardsCreateTemplate</initAction>
+				</card_create>
 				<user-list>
 					<initAction>get_usersListTemplate</initAction>
 				</user-list>

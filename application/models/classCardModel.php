@@ -5,10 +5,8 @@
 			
 		}
 
-		public function get_deckList() {
-			// $result = Decks::get_deckList();
-			return $result = Decks::get_deckList();
-
+		public function get_cardList($deck) {
+			return Card::get_cardList($deck);
 		}
 
 		public function create_card($data) { 

@@ -1,35 +1,110 @@
-.header {
+body {
+	width: auto;
+	margin: 20px 50px;
+}
+
+header {
 	width: 100%;
-	margin: 0px auto;
+	display: flex;
+	margin-bottom: 100px;
 }
-.body {
-	width: 100%;
-	margin: 20px auto;
+
+header ul {
+	width: 70%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0;
+	padding: 0;
 }
-.header-element {
-	float: left;
+
+header ul li {
+	list-style: none;
+	position: relative;
 }
+
+header ul li a {
+	text-decoration: none;
+	color: blue;
+	font-size: 26px;
+	font-weight: bold;
+}
+
+header ul li a:hover {
+	text-decoration: underline;
+	color: darkblue;
+}
+
+header ul li .sub-menu {
+	display: none;
+}
+
+header ul li:hover > .sub-menu {
+	display: block;
+}
+
+.sub-menu {
+	width: 120px;
+	padding: 10px;
+	position: absolute;
+	top: 30px;
+	left: 0;
+	background: lightgrey;
+}
+
+.sub-menu li a {
+	font-size: 20px;
+}
+
 .clearfix {
 	clear: both;
 }
-.menu .menu-item {
-	float: left;
-	margin-left: 20px;
+
+form {
+	text-align: center;
+	margin: 0 auto;
 }
+
+form label {
+	display: block;
+	margin: 10px auto;
+}
+
+table {
+	margin: 0 auto;
+}
+
 .main-floated {
 	float: left;
 }
+
 .side-bar {
 	margin-left: 80px;
 }
+
 .main-bar {
 	margin-left: 60px;
 }
-.footer {
+
+footer {
+	margin-top: 100px;
 	text-align: center;
-	margin-left: 60px;
 }
 
 .additional {
 	display: none;
+}
+
+#cards-list {
+	font-size: 20px;
+	width: 90%;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+#cards-list td {
+	text-align: center;
+	border: 1px solid black;
+	border-collapse: collapse;
+	height: 35px;
 }

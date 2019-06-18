@@ -8,14 +8,13 @@
 			$this->mysqli = $mysqli;
 			$this->userCookie = $userCookie;
 		}
+
 		public function get_deckList() {
-			// $result = Decks::get_deckList();
-			return $result = Decks::get_deckList();
+			return Decks::get_deckList();
 
 		}
 
 		public function create_deck($data) { 
 			Decks::create_deck($data);
-
 		}
 	}

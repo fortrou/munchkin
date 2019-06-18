@@ -32,24 +32,42 @@
 		public function get_usersList($user_role) {
 			return $result = $this->mainModel->get_usersList($_SESSION['user']['user_role'], $user_role);
 		}
+
 		public function get_decksTemplate() {
-			global $appController;
-			$decks = new DeckModel();
-			$result = $decks->get_deckList();
-			echo "<pre>";
-			var_dump($result);
-			echo "</pre>";
 			require_once(DOC_ROOT . "/content/templates/cabinet/decks.php");
 		}
+
+        public function get_decksArray() {
+            $decks = new DeckModel();
+            return $decks->get_deckList();
+        }
+
+        public function get_cardsTemplate() {
+            require_once(DOC_ROOT . "/content/templates/cabinet/cards.php");
+        }
+
+        public function get_cardsArray($deck = null) {
+            $cards = new CardModel();
+            return $cards->get_cardList($deck);
+        }
+
 		public function get_decksCreateTemplate() {
-			global $appController;
-			$decks = new DeckModel();
 			require_once(DOC_ROOT . "/content/templates/cabinet/decks_create.php");
 		}
 
+		public function create_deck($data) {
+            $decks = new DeckModel();
+            $decks->create_deck($data);
+        }
+
 		public function get_cardsCreateTemplate() {
-			$cards = new CardModel();
+
 			require_once(DOC_ROOT . "/content/templates/cabinet/cards_create.php");
 		}
+
+		public function create_card($data) {
+            $cards = new CardModel();
+            $cards->create_card($data);
+        }
 	}
 ?>

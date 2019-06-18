@@ -3,7 +3,7 @@
 
 class DeckController
 {
-	public
+
 
 
 
