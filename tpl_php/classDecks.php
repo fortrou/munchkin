@@ -17,23 +17,8 @@
 		private $deckDungeonsDiscard;
 		private $deckTreasuresDiscard;
 
-		function __construct($deckID) {
-			if(empty($deckID)) return false;
+		public function __construct($deckID) {
 			$this->deckID = $deckID;
-		}
-
-		public static function get_deckList() {
-			$result = array();
-			if ($_SESSION['user']['user_role'] == 2) {
-				$result = Database::select('mnc_decks', array('*'));
-			} else if ($_SESSION['user']['user_role'] == 1) {
-				$result = Database::select('mnc_decks', array('*'), array('deck_author' => $_SESSION['user']['id']));
-			}
-			return $result;
-		}
-
-		public static function create_deck($data=array()) {
-			return Database::insert('mnc_decks', array_keys($data), array_values($data));
 		}
 
 		/*array(1 => array('1', 1),

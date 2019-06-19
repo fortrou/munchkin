@@ -33,16 +33,5 @@
 
 		}
 
-		public static function create_card($data = []) {
-			Database::insert('mnc_cards', array_keys($data), array_values($data));
-		}
-
-		public static function get_cardList($deck) {
-		    if (false === $deck) {
-		        return Database::select('mnc_cards', '*');
-            } else{
-		        return Database::select('mnc_cards', '*');
-            }
-        }
 	}
 ?>

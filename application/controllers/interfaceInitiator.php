@@ -1,6 +1,8 @@
 <?php
+
 	
-	interface Initiator {
-		public function init_work($uri);
-	} 
-?>
+interface Initiator
+{
+    public function init_work();
+
+}

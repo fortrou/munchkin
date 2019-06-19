@@ -1,20 +1,23 @@
-<?php 
-	Class DeckModel {
-		private $mysqli;
-		private $userCookie;
-		function __construct() {
-			global $mysqli;
-			global $userCookie;
-			$this->mysqli = $mysqli;
-			$this->userCookie = $userCookie;
-		}
+<?php
 
-		public function get_deckList() {
-			return Decks::get_deckList();
 
-		}
+class DeckModel extends BaseModel {
 
-		public function create_deck($data) { 
-			Decks::create_deck($data);
-		}
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    public function get_deckList() {
+        if ($this->user_role == 2) {
+            $result = $this->db->select('mnc_decks', ['*']);
+        } else if ($this->user_role == 1) {
+            $result = $this->db->select('mnc_decks', ['*'], ['deck_author' => $_SESSION['user']['id']]);
+        }
+        return $result ?? [];
 	}
+
+	public function create_deck($data) {
+        return $this->db->insert('mnc_decks', $data);
+	}
+}

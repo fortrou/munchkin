@@ -1,15 +1,23 @@
-<?php 
-	Class CardModel {
-		
-		function __construct() {
-			
-		}
+<?php
 
-		public function get_cardList($deck) {
-			return Card::get_cardList($deck);
-		}
 
-		public function create_card($data) { 
-			Card::create_card($data);
-		}
+class CardModel extends BaseModel {
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+	public function get_cardList($deck_id) {
+		if (false === $deck_id) {
+            $result = $this->db->select('mnc_cards', '*');
+        } else {
+            $result = $this->db->select('mnc_cards', '*');
+        }
+		return $result;
 	}
+
+	public function create_card($data) {
+        return $this->db->insert('mnc_cards', $data);
+	}
+}
