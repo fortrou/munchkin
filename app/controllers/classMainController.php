@@ -1,9 +1,9 @@
 <?php
-require_once("interfaceInitiator.php");
 
-class Main implements Initiator {
+
+class MainController extends BaseController {
 	function __construct() {
-		# code...
+		parent::__construct();
 	}
 
 	public function init_work() {
@@ -11,7 +11,7 @@ class Main implements Initiator {
 	}
 
 	public function render_mainPage() {
-		require_once(DOC_ROOT . "/content/templates/main.php");
+	    $this->view->render_page('main.php');
 	}
 
 }

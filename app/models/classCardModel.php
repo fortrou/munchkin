@@ -9,7 +9,7 @@ class CardModel extends BaseModel {
     }
 
 	public function get_cardList($deck_id) {
-		if (false === $deck_id) {
+		if (null === $deck_id) {
             $result = $this->db->select('mnc_cards', '*');
         } else {
             $result = $this->db->select('mnc_cards', '*');

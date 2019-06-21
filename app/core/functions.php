@@ -43,20 +43,6 @@
 		}
 	}
 
-	function get_header() {
-		if(!isset($_SESSION['user'])) {
-			require_once(ROOT . '/content/blocks/header.php');
-		} else if($_SESSION['user']['user_role'] == 1) {
-			require_once(ROOT . '/content/blocks/header-user.php');
-		} else if($_SESSION['user']['user_role'] == 2) {
-			require_once(ROOT . '/content/blocks/header-admin.php');
-		}
-	}
-
-	function get_footer() {
-		require_once(ROOT . '/content/blocks/footer.php');
-	}
-
 	/**
 	 * check_array_with_regular() - проверяет соответствие строки массиву паттернов, возвращает ключ => значение
 	 * $patterns - Массив паттернов

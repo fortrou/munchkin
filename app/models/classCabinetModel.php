@@ -14,8 +14,6 @@ class CabinetModel extends BaseModel
             $where_string = sprintf(" AND user_role = %s", $req_role);
         }
 
-        echo $this->user_role;
-
         return $this->db->select('mnc_users', ['*'], $where_string, ['id' => 'DESC']);
     }
 }

@@ -1,8 +1,4 @@
-<?php get_header(); ?>
-
-<?php $result = $this->get_cardsArray(); ?>
-
-    <table id="cards-list">
+<table id="cards-list">
         <tr>
             <td>Card Id</td>
             <td>Card Author</td>
@@ -17,7 +13,7 @@
             <td>Card Treasures</td>
             <td>Card Levels</td>
         </tr>
-        <?php foreach ($result as $value): ?>
+        <?php foreach ($data as $value): ?>
             <tr>
                 <td>
                     <?php echo $value["id"]; ?>
@@ -57,6 +53,4 @@
                 </td>
             </tr>
         <?php endforeach; ?>
-    </table>
-
-<?php get_footer(); ?>
+</table>

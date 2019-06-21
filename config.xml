@@ -3,7 +3,7 @@
 	<routers>
 		<cabinet>
 			<controller>
-				<initController>Cabinet</initController>
+				<initController>CabinetController</initController>
 				<decks>
 					<initAction>get_decksTemplate</initAction>
 				</decks>
@@ -19,9 +19,6 @@
 				<user-list>
 					<initAction>get_usersListTemplate</initAction>
 				</user-list>
-				<actionAlias>
-					<initAction></initAction>
-				</actionAlias>
 			</controller>
 		</cabinet>
 		<game>
@@ -34,7 +31,7 @@
 		</game>
 		<authorization>
 			<controller>
-				<initController>Authorization</initController>
+				<initController>AuthorizationController</initController>
 				<login>
 					<initAction>get_loginTemplate</initAction>
 				</login>

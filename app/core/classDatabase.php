@@ -36,6 +36,68 @@ class Database
 		return $this->mysqli->real_escape_string(trim(strip_tags($value)));
 	}
 
+	public function prepare_select($query, $params = []) {
+        if ($stmt = $this->mysqli->prepare($query)) {
+            self::bind_params($stmt, $params);
+            if($stmt->execute()) {
+                $result_array = self::fetch($stmt);
+            }
+            $stmt->close();
+        }
+        return $result_array ?? [];
+    }
+
+    public function prepare($query, $params = []) {
+        if ($stmt = $this->mysqli->prepare($query)) {
+            self::bind_params($stmt, $params);
+            $stmt->execute();
+            $result = $stmt->affected_rows;
+            $stmt->close();
+        }
+        return $result ?? false;
+    }
+
+    public static function bind_params(mysqli_stmt &$stmt, &$params) {
+        $types = $params[0];
+        unset($params[0]);
+        $stmt->bind_param($types, ...$params);
+    }
+
+    public static function fetch($result)
+    {
+        $array = [];
+
+        if ($result instanceof mysqli_stmt)
+        {
+            $result->store_result();
+
+            $variables = [];
+            $data = [];
+            $meta = $result->result_metadata();
+
+            while($field = $meta->fetch_field())
+                $variables[] = &$data[$field->name];
+
+            //call_user_func_array([$result, 'bind_result'], $variables);
+            //Need to check
+            $result->bind_result(...$variables);
+
+            $i=0;
+            while($result->fetch())
+            {
+                $array[$i] = array();
+                foreach($data as $k=>$v)
+                    $array[$i][$k] = $v;
+                $i++;
+            }
+        } elseif ($result instanceof mysqli_result) {
+            while($row = $result->fetch_assoc())
+                $array[] = $row;
+        }
+
+        return $array;
+    }
+
 	public function insert($table, $data_arr = []) {
 
 		$columns = array_keys($data_arr);
@@ -66,15 +128,19 @@ class Database
 		$columns_string = rtrim($columns_string,', ');
 		$values_string = rtrim($values_string,', ');
 
-		$sql = sprintf("INSERT INTO %s (%s) VALUES (%s)", $table, $columns_string, $values_string);
+		$sql = sprintf(
+		    'INSERT INTO %s
+             (%s)
+             VALUES (%s)',
+            $table,
+            $columns_string,
+            $values_string);
 		$this->mysqli->query($sql);
 
 		return $this->mysqli->affected_rows ?: false;
 	}
 
 	public function select($table, $columns = ['*'], $where = '', $orderby = []) {
-		$resultArray = [];
-
 		if(count($columns) == 0) return false;
 		$columns_string = '';
 		$where_string = '';
@@ -111,26 +177,22 @@ class Database
         $orderby_string = rtrim($orderby_string,', ');
 
 		$sql = sprintf(
-			"SELECT %s
+			'SELECT %s
 			 FROM %s
 			 WHERE 1 = 1
 			 %s
-			 %s",
+			 %s',
 			$columns_string,
 			$table,
 			$where_string,
 			$orderby_string
 		);
 
-		var_dump($sql);
-
 		$res = $this->mysqli->query($sql);
 		if($res->num_rows) {
-			while ($row = $res->fetch_assoc()) {
-				$resultArray[] = $row;
-			}
+            $resultArray = self::fetch($res);
 		}
-		return $resultArray;
+		return $resultArray ?? [];
 	}
 
 	public function update($table, $params = [], $where = []) {

@@ -1,12 +1,3 @@
-<?php get_header(); ?>
-
-<?php
-if(isset($_POST["create_deck"])) {
-	unset($_POST['create_deck']);
-	$this->create_deck($_POST);
-}
-?>
-
 <form action="" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="deck_author" value="<?php echo $_SESSION['user']['id']; ?>">
 	<label>
@@ -32,5 +23,3 @@ if(isset($_POST["create_deck"])) {
     </button>
 	<br>
 </form>
-
-<?php get_footer(); ?>

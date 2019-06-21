@@ -1,11 +1,3 @@
-<?php get_header(); ?>
-<?php
-if(isset($_POST['create_card'])) {
-	unset($_POST['create_card']);
-	$this->create_card($_POST);
-}
-?>
-
 <form action="" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="card_author" value="<?php echo $_SESSION['user']['id']; ?>">
     <label>
@@ -81,5 +73,3 @@ if(isset($_POST['create_card'])) {
 		}
 	})
 </script>
-
-<?php get_footer(); ?>

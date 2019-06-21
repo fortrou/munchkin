@@ -1,7 +1,7 @@
 <?php
 	if(isset($_POST['change'])) {
 		try {
-			Authorization::edit_user($_POST);
+			AuthorizationController::edit_user($_POST);
 			header("Location:" . $_SERVER['REQUEST_URI']);
 		} catch(Exception $e) {
 
