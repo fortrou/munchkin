@@ -3,14 +3,16 @@
 class Helper
 {
 
-    public static function dump($var) {
+    public static function dump(...$vars) {
         echo '<pre>';
-        var_dump($var);
+        foreach ($vars as $var) {
+            var_dump($var);
+        }
         echo '</pre>';
     }
 
-    public static function escape_html($string) {
-        return htmlspecialchars(strip_tags($string));
+    public static function escape_html($str) {
+        return htmlspecialchars(strip_tags($str));
     }
 
 }

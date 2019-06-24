@@ -19,4 +19,12 @@
             <a href="<?php echo PROTOCOL . SITE_NAME; ?>/authorization/sign_out">Sign out</a>
         </li>
     </ul>
+
+    <a class="profile" href="<?php echo PROTOCOL . SITE_NAME; ?>cabinet">
+        <span>
+            <?php echo $_SESSION['user']['user_nickname']; ?>
+        </span>
+        <img src="<?php echo AVATARS . $_SESSION['user']['user_avatar']; ?>" alt="profile-img">
+    </a>
 </header>
+<div class="content-wrapper">

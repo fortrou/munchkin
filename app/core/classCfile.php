@@ -51,7 +51,7 @@
 			return true;
 		}
 
-		static public function Load( $file, $path )
+		static public function load( $file, $path )
 		{
 			$up_dir = $path;
 			$type = $file['type'];

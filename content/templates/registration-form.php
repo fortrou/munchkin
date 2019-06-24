@@ -1,10 +1,23 @@
-<form action="" method="post">
-	<input type="text" name="login">
-	<br>
-	<input type="password" name="password">
-	<br>
-	<input type="password" name="password_repeat">
-	<br>
-	<input type="submit" name="register" value="Register">
-	<br>
+<form action="" method="post" class="auth-form">
+    <label>
+        <span>
+            Login
+        </span>
+        <input type="text" name="login">
+    </label>
+    <label>
+        <span>
+            Password
+        </span>
+        <input type="password" name="password">
+    </label>
+    <label>
+        <span>
+            Re-Enter Your Password
+        </span>
+        <input type="password" name="password_repeat">
+    </label>
+    <button type="submit" name="register">
+        Register
+    </button>
 </form>

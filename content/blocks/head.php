@@ -8,4 +8,3 @@
 	<title>Munchkin</title>
 </head>
 <body>
-	<div class="wrapper">

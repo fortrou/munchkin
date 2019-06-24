@@ -1,19 +1,30 @@
 body {
 	width: auto;
-	margin: 20px 50px;
+	margin: 0;
+	min-height: 98vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+iframe {
+	width: 900px;
+	height: 600px;
+	display: block;
+	margin: auto;
 }
 
 header {
 	width: 100%;
 	display: flex;
-	margin-bottom: 100px;
+	padding: 0 50px;
+	box-sizing: border-box;
+	background: lightskyblue;
+	justify-content: space-between;
 }
 
 header ul {
-	width: 70%;
 	display: flex;
-	justify-content: space-around;
-	align-items: center;
 	margin: 0;
 	padding: 0;
 }
@@ -21,6 +32,10 @@ header ul {
 header ul li {
 	list-style: none;
 	position: relative;
+	display: flex;
+	align-items: center;
+	height: 100%;
+	padding: 0 30px;
 }
 
 header ul li a {
@@ -28,11 +43,6 @@ header ul li a {
 	color: blue;
 	font-size: 26px;
 	font-weight: bold;
-}
-
-header ul li a:hover {
-	text-decoration: underline;
-	color: darkblue;
 }
 
 header ul li .sub-menu {
@@ -44,16 +54,48 @@ header ul li:hover > .sub-menu {
 }
 
 .sub-menu {
-	width: 120px;
+	width: 150px;
 	padding: 10px;
 	position: absolute;
-	top: 30px;
+	top: 80px;
 	left: 0;
 	background: lightgrey;
 }
 
+.sub-menu li {
+	padding: 0;
+}
+
 .sub-menu li a {
 	font-size: 20px;
+}
+
+.sub-menu li a:hover {
+	text-decoration: underline;
+}
+
+header a.profile {
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	color: black;
+	font-size: 26px;
+	padding: 0 25px;
+}
+
+header a.profile:hover,
+header > ul > li:hover {
+	background-color: steelblue;
+}
+
+header .profile img {
+	height: 50px;
+	width: 50px;
+	margin-left: 15px;
+}
+
+.content-wrapper {
+	margin: 20px 50px;
 }
 
 .clearfix {
@@ -87,7 +129,6 @@ table {
 }
 
 footer {
-	margin-top: 100px;
 	text-align: center;
 }
 
@@ -107,4 +148,46 @@ footer {
 	border: 1px solid black;
 	border-collapse: collapse;
 	height: 35px;
+}
+
+.auth-form {
+	width: 30%;
+	margin: 0 auto;
+}
+
+.auth-form label {
+	font-size: 30px;
+	font-weight: bold;
+	display: block;
+	margin: 15px 0;
+}
+
+.auth-form label input {
+	display: block;
+	width: 100%;
+	border: 1px solid black;
+	border-radius: 20px;
+	background-color: white;
+	min-height: 30px;
+	font-size: 20px;
+	padding: 5px 10px;
+	margin-top: 10px;
+}
+
+.auth-form label input::placeholder {
+	color: lightgrey;
+}
+
+.auth-form button {
+	width: 100px;
+	height: 20px;
+	box-sizing: content-box;
+	font-size: 20px;
+	padding: 5px;
+	margin: 0 auto;
+}
+
+.thumb {
+	width: 100px;
+	height: 100px;
 }

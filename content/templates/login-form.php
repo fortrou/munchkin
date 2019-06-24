@@ -1,8 +1,17 @@
-<form action="" method="post">
-	<input type="text" name="login">
-	<br>
-	<input type="password" name="password">
-	<br>
-    <input type="submit" name="sign-in" value="Login">
-    <br>
+<form action="" method="post" class="auth-form">
+    <label>
+        <span>
+            Login
+        </span>
+        <input type="text" name="login">
+    </label>
+    <label>
+        <span>
+            Password
+        </span>
+        <input type="password" name="password">
+    </label>
+    <button type="submit" name="sign-in">
+        Login
+    </button>
 </form>
