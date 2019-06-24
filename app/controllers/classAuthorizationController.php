@@ -9,7 +9,7 @@ class AuthorizationController extends BaseController {
 		$this->authModel = new AuthorizationModel();
 	}
 
-	public function init_work($action='') {
+	public function init_work($action = '') {
         $this->view->render_page('404.php');
 	}
 
@@ -29,15 +29,19 @@ class AuthorizationController extends BaseController {
         $this->view->render_page('registration-form.php');
 	}
 
-	public function create_user($data = array()) {
-	    $this->authModel->reg($data);
+	public function create_user($data = []) {
+	    $this->authModel->register($data);
 	}
 
-	public function authorize_user($data = array()) {
-		$this->authModel->auth($data);
+	public function authorize_user($data = []) {
+		$this->authModel->authorize($data);
 	}
 
-	public static function edit_user($data = array()) {
+	public function deauthorize_user() {
+	    $this->authModel->sign_out();
+    }
+
+	public static function edit_user($data = []) {
 		if(empty($data)) {
 			throw new Exception("e_1");
 		}

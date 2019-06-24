@@ -11,6 +11,4 @@ abstract class BaseController
     }
 
     abstract public function init_work();
-
-
 }

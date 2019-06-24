@@ -7,52 +7,44 @@ class AuthorizationModel extends BaseModel {
 		parent::__construct();
 	}
 
-	public function reg($data) {
+	public function register($data) {
         if(!empty($data["login"]) && !empty($data["password"]) && $data["password"] == $data["password_repeat"]) {
             $insert_sql = 'INSERT INTO mnc_users
                            (user_login, user_password, user_regDate) 
 				           VALUES (?, ?, ?)';
             $params = [
-                'sss',
                 Helper::escape_html($data["login"]),
                 md5( Helper::escape_html($data["password"])),
                 Date("Y-m-d"),
             ];
-            $result = $this->db->prepare($insert_sql, $params);
-        }
-        return $result ?? false;
+            if ($this->db->prepare($insert_sql, $params)) {
+                $this->authorize($data);
+            }
+        } else return false;
     }
 
-	public function authorize($data = array()) {
-		if(!empty($data["login"]) && !empty($data["password"])) {
-			$data["password"] = md5(htmlspecialchars(strip_tags($data["password"])));
-			$sql = sprintf("SELECT * FROM mnc_users
-									WHERE user_login = '%s' AND user_password = '%s'", htmlspecialchars(strip_tags($data["login"])), $data["password"]);
-			$res = $this->mysqli->query($sql);
-			if($res->num_rows == 1) {
-				$row = $res->fetch_assoc();
-				$this->userCookie->set_user_cookie('user', $row, (3600*24));
-			}
-		}
-	}
-
-	public function auth($data) {
+	public function authorize($data) {
         if(!empty($data["login"]) && !empty($data["password"])) {
-            $sql = 'SELECT *
+            $sql = 'SELECT id, user_login, user_role
                     FROM mnc_users
 					WHERE user_login = ? AND user_password = ?';
             $params = [
-                'ss',
                 Helper::escape_html($data["login"]),
                 md5( Helper::escape_html($data["password"])),
             ];
             $result = $this->db->prepare_select($sql, $params);
             if (!empty($result)) {
-                //$cookie_manager = new CookieManager('user', 'base64_encode', 'base64_decode');
-                //$cookie_manager->set_user_cookie('user', $result[0], 3600*24);
-                setcookie('user', serialize($result[0]), time() + 3600*24, '/');
+                $cookie_manager = new CookieManager('base64_encode', 'base64_decode');
+                $cookie_manager->set_user_cookie('user', $result[0], 60*60*24, '/');
+                header('Location: ' . PROTOCOL . SITE_NAME);
             }
         }
+    }
+
+    public function sign_out() {
+	    $cookie_manager = new CookieManager('base64_encode', 'base64_decode');
+	    $cookie_manager->unset_cookie('user');
+        header('Location: ' . PROTOCOL . SITE_NAME);
     }
 
 	public static function edit($data = array()) {

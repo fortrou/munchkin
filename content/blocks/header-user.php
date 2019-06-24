@@ -2,11 +2,21 @@
 
 <header>
     <h1>LOGO</h1>
-    <nav>
-        <a href="<?php echo PROTOCOL . SITE_NAME; ?>">Main</a>
-        <a href="#">My decks</a
-        <a href="#">Contacts</a>
-        <a href="#">Search game</a>
-        <a href="/goout.php">Sign out</a>
-    </nav>
+    <ul>
+        <li>
+            <a href="<?php echo PROTOCOL . SITE_NAME; ?>">Main</a>
+        </li>
+        <li>
+            <a href="#">My decks</a
+        </li>
+        <li>
+            <a href="#">Contacts</a>
+        </li>
+        <li>
+            <a href="#">Search game</a>
+        </li>
+        <li>
+            <a href="<?php echo PROTOCOL . SITE_NAME; ?>/authorization/sign_out">Sign out</a>
+        </li>
+    </ul>
 </header>

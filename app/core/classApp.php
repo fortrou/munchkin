@@ -51,6 +51,7 @@ class App {
 			$actionToLoad = "init_work";
 		}
 
+		SessionManager::add_cookieToSession('user');
         $app_controller = new $controller();
 		$app_controller->$actionToLoad();
 	}

@@ -58,31 +58,37 @@ class Database
     }
 
     public static function bind_params(mysqli_stmt &$stmt, &$params) {
-        $types = $params[0];
-        unset($params[0]);
+	    $types = '';
+	    foreach ($params as $param) {
+	        if (is_string($param)) {
+	            $types .= 's';
+            } elseif (is_int($param)) {
+	            $types .= 'i';
+            } elseif (is_float($param)) {
+                $types .= 'd';
+            } else {
+	            $types .= 'b';
+            }
+        }
         $stmt->bind_param($types, ...$params);
     }
 
     public static function fetch($result)
     {
         $array = [];
-
-        if ($result instanceof mysqli_stmt)
-        {
+        if ($result instanceof mysqli_stmt) {
             $result->store_result();
-
             $variables = [];
             $data = [];
             $meta = $result->result_metadata();
 
-            while($field = $meta->fetch_field())
+            while($field = $meta->fetch_field()) {
                 $variables[] = &$data[$field->name];
+            }
 
-            //call_user_func_array([$result, 'bind_result'], $variables);
-            //Need to check
             $result->bind_result(...$variables);
-
             $i=0;
+
             while($result->fetch())
             {
                 $array[$i] = array();

@@ -11,5 +11,5 @@ while($flag) {
 		$flag = false;
 	}
 }
-header("Location: ./");
+header('Location: ' . PROTOCOL . SITE_NAME);
 ?>

@@ -38,6 +38,9 @@
 				<registration>
 					<initAction>get_registerTemplate</initAction>
 				</registration>
+				<sign_out>
+					<initAction>deauthorize_user</initAction>
+				</sign_out>
 			</controller>
 		</authorization>
 	</routers>

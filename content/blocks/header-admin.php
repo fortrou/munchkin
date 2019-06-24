@@ -43,7 +43,7 @@
             <a href="#">Search game</a>
         </li>
         <li>
-            <a href="/goout.php">Sign out</a>
+            <a href="<?php echo PROTOCOL . SITE_NAME; ?>/authorization/sign_out">Sign out</a>
         </li>
     </ul>
 </header>
