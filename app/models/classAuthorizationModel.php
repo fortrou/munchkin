@@ -23,8 +23,8 @@ class AuthorizationModel extends BaseModel {
         if(!empty($data["login"]) && !empty($data["password"]) && $data["password"] == $data["password_repeat"]) {
             if ($this->check_isLoginUnique($data["login"])) {
                 $insert_sql = 'INSERT INTO mnc_users
-                           (user_login, user_password, user_regDate) 
-				           VALUES (?, ?, ?)';
+                               (user_login, user_password, user_regDate) 
+				               VALUES (?, ?, ?)';
                 $params = [
                     Helper::escape_html($data["login"]),
                     md5(Helper::escape_html($data["password"])),
@@ -35,7 +35,6 @@ class AuthorizationModel extends BaseModel {
                 }
             }
         }
-        echo 'not today';
         return false;
     }
 
@@ -50,8 +49,7 @@ class AuthorizationModel extends BaseModel {
             ];
             $result = $this->db->prepare_select($sql, $params);
             if (!empty($result)) {
-                $cookie_manager = new CookieManager('base64_encode', 'base64_decode');
-                $cookie_manager->set_user_cookie('user', $result[0], 60*60*24, '/');
+                self::set_authCookie($result[0]);
                 header('Location: ' . PROTOCOL . SITE_NAME);
             }
         }
@@ -72,12 +70,16 @@ class AuthorizationModel extends BaseModel {
         ];
         $result = $this->db->prepare_select($sql, $params);
         if (!empty($result)) {
-            $cookie_name = 'user';
-            $cookie = new CookieManager('base64_encode', 'base64_decode');
-            $cookie->unset_cookie($cookie_name);
-            $cookie->set_user_cookie($cookie_name, $result[0], 60*60*24, '/');
+            self::set_authCookie($result[0]);
             header('Refresh: 0');
         }
+    }
+
+    public static function set_authCookie($user_data) {
+        $cookie_name = 'user';
+        $cookie = new CookieManager('base64_encode', 'base64_decode');
+        $cookie->unset_cookie($cookie_name);
+        $cookie->set_user_cookie($cookie_name, $user_data, 60*60*24, '/');
     }
 
 }

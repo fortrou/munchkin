@@ -57,19 +57,10 @@
 <script type="text/javascript">
 	jQuery(document).ready(($) => {
 		let $additionalFileds = $('.additional');
-
 		$('select[name="card_type"]').on('change', function() {
 			if($(this).val() == 3) {
-				showAdditionalFields();
-			} else hideAdditionalFields();
+                $additionalFileds.fadeIn(500);
+			} else $additionalFileds.fadeOut(500);
 		});
-
-		function showAdditionalFields() {
-			$additionalFileds.fadeIn(500);
-		}
-
-		function hideAdditionalFields() {
-			$additionalFileds.fadeOut(500);
-		}
 	})
 </script>

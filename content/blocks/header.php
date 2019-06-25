@@ -1,7 +1,7 @@
 <?php require_once("head.php"); ?>
 
 <header>
-	<h1>LOGO</h1>
+    <img src="<?php echo PROTOCOL . SITE_NAME; ?>/content/images/logo.png" alt="">
 	<ul>
         <li>
             <a href="<?php echo PROTOCOL . SITE_NAME; ?>">Main</a>

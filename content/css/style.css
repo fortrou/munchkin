@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans&display=swap');
 body {
 	width: auto;
 	margin: 0;
@@ -5,6 +6,8 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	font-family: 'PT Sans', sans-serif;
+	letter-spacing: 1px;
 }
 
 iframe {
@@ -14,13 +17,24 @@ iframe {
 	margin: auto;
 }
 
+h1 {
+	text-align: center;
+	font-size: 36px;
+}
+
 header {
+	height: 100px;
 	width: 100%;
 	display: flex;
 	padding: 0 50px;
 	box-sizing: border-box;
-	background: lightskyblue;
+	background: #171f33;
 	justify-content: space-between;
+}
+
+header img {
+	height: 100px;
+	width: auto;
 }
 
 header ul {
@@ -32,17 +46,18 @@ header ul {
 header ul li {
 	list-style: none;
 	position: relative;
+}
+
+header ul li a {
 	display: flex;
 	align-items: center;
 	height: 100%;
 	padding: 0 30px;
-}
-
-header ul li a {
 	text-decoration: none;
-	color: blue;
+	color: white;
 	font-size: 26px;
 	font-weight: bold;
+	text-transform: capitalize;
 }
 
 header ul li .sub-menu {
@@ -57,17 +72,21 @@ header ul li:hover > .sub-menu {
 	width: 150px;
 	padding: 10px;
 	position: absolute;
-	top: 80px;
+	top: 100px;
 	left: 0;
-	background: lightgrey;
+	background: #313971;
 }
 
 .sub-menu li {
+	margin: 10px auto;
 	padding: 0;
 }
 
 .sub-menu li a {
 	font-size: 20px;
+	display: inline;
+	text-align: center;
+	padding: 0;
 }
 
 .sub-menu li a:hover {
@@ -78,14 +97,14 @@ header a.profile {
 	display: flex;
 	align-items: center;
 	text-decoration: none;
-	color: black;
+	color: white;
 	font-size: 26px;
 	padding: 0 25px;
 }
 
 header a.profile:hover,
 header > ul > li:hover {
-	background-color: steelblue;
+	background-color: #313971;
 }
 
 header .profile img {

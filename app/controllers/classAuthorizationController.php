@@ -41,12 +41,4 @@ class AuthorizationController extends BaseController {
 	    $this->authModel->sign_out();
     }
 
-	public static function edit_user($data = []) {
-		if(empty($data)) {
-			throw new Exception("e_1");
-		}
-		$result = AuthorizationModel::edit($data);
-	}
-
-
 }

@@ -44,7 +44,7 @@ class CabinetController extends BaseController {
     }
 
 	public function get_decksCreateTemplate() {
-        if (isset($_POST["create_deck"])) {
+        if (isset($_POST['create_deck'])) {
             unset($_POST['create_deck']);
             $this->create_deck($_POST);
         }
@@ -70,7 +70,7 @@ class CabinetController extends BaseController {
     }
 
     public function edit_user($data, $files) {
-	    $id = $_SESSION['user']['id'];
+	    $id = $_GET['id'] ?: $_SESSION['user']['id'];
         $cabinet = new CabinetModel();
         $cabinet->edit_user($id, $data, $files);
     }
