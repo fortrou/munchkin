@@ -16,13 +16,13 @@ class Database
 	}
 
 	private function __construct() {
-		$this->mysqli = new mysqli( 'localhost' , DB_USER , DB_PASSWORD , DATABASE);
+		$this->mysqli = new mysqli( 'localhost', DB_USER, DB_PASSWORD, DATABASE);
 		$this->mysqli->query("SET NAMES 'utf8';");
 		$this->mysqli->query("SET CHARACTER SET 'utf8';");
 		$this->mysqli->query("SET SESSION collation_connection = 'utf8_general_ci';");
 
 		if ( mysqli_connect_error() )
-			throw new Exception("Failed to connect to DB:" . mysqli_connect_error());
+			throw new Exception('Failed to connect to DB:' . mysqli_connect_error());
 	}
 
 	private function __clone () {
@@ -57,7 +57,7 @@ class Database
         return $result ?? false;
     }
 
-    public static function bind_params(mysqli_stmt &$stmt, &$params) {
+    public static function bind_params(mysqli_stmt &$stmt, $params) {
 	    $types = '';
 	    foreach ($params as $param) {
 	        if (is_string($param)) {

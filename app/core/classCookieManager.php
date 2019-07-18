@@ -29,14 +29,14 @@ class CookieManager {
 	public function unset_cookie($cookie_name) {
 		setcookie($cookie_name, '', 1);
 		setcookie($cookie_name, '', 1, '/');
-		$flag = true;
-		while($flag) {
-			if(isset($_COOKIE[$cookie_name])) {
-				setcookie($cookie_name, '', 1);
-				$flag = false;
-			}
-		}
-		return true;
+//		$flag = true;
+//		while($flag) {
+//			if(isset($_COOKIE[$cookie_name])) {
+//				setcookie($cookie_name, '', 1);
+//				$flag = false;
+//			}
+//		}
+//		return true;
 	}
 
 	public function get_cookie($name) {
